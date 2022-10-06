@@ -1,0 +1,3 @@
+[submodule "mworks"]
+	path = mworks
+	url = https://github.com/mworks/mworks.git

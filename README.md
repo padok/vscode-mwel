@@ -1,15 +1,19 @@
-# vscode-mwel
+# vscode-mwel README
 
-VSCode MarketPlace: TBA
+The mWorks Experiment Language (MWEL) extension adds language support for MWEL to Visual Studio Code.
 
-## Build extension
+## Known Issues
 
-```bash
-# install dependencies
-npm install -g vsce
-# make package
-vsce package
-```
+Calling out known issues can help limit users opening duplicate issues against your extension.
+
+## Release Notes
+
+Users appreciate release notes as you update your extension.
+
+### 1.0.0
+
+TBA
+
 
 ## License
 
