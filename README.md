@@ -1,7 +1,15 @@
 # vscode-mwel
 
-
 VSCode MarketPlace: TBA
+
+## Build extension
+
+```bash
+# install dependencies
+npm install -g vsce
+# make package
+vsce package
+```
 
 ## License
 
