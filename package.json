@@ -1,0 +1,52 @@
+{
+    "name": "VSCode-MWEL",
+    "version": "0.0.1",
+    "publisher": "padok",
+    "description": "MWEL Language Pack",
+    "author": {
+        "name": "Louis Frank (a.k.a padok)"
+    },
+    "icon": "images/mwel.png",
+    "categories": [
+        "Language Packs"
+    ],
+    "license": "MIT",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/padok/vscode-mwel"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "typescript": "3.7.4",
+        "vscode": "1.1.36"
+    },
+    "engines": {
+        "vscode": "^0.10.10"
+    },
+    "contributes": {
+        "languages": [
+            {
+                "id": "mwel",
+                "aliases": [
+                    "MWEL"
+                ],
+                "extensions": [
+                    ".mwel"
+                ],
+                "configuration": "./mwel.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "mwel",
+                "scopeName": "source.mwel",
+                "path": "./syntaxes/mwel.tmLanguage.json"
+            }
+        ]
+    },
+    "readmeFilename": "README.md",
+    "bugs": {
+        "url": "https://github.com/padok/vscode-mwel/issues"
+    }
+}
