@@ -4,3 +4,7 @@
 
 + Initial release
 + Syntax highlighting
+
+## 0.1.1 - 2022-10-06
+
++ new icon

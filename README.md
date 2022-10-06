@@ -12,6 +12,8 @@ Calling out known issues can help limit users opening duplicate issues against y
 
 This extension heavily borrows from [cstawarz's repository](https://github.com/cstawarz/mwel_sublime) for Sublime.
 
+Icon by [Freepik](https://www.flaticon.com/authors/freepik) from [Flaticon](https://www.flaticon.com/).
+
 ## Author
 
 Louis Frank (a.k.a. padok)
