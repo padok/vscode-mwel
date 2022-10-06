@@ -1,6 +1,8 @@
 # vscode-mwel README
 
-The mWorks Experiment Language (MWEL) extension adds language support for MWEL to Visual Studio Code.
+This extension adds language support for mWorks Experiment Language (MWEL) to Visual Studio Code.
+
+[Visual Studio Code - Marketplace](https://marketplace.visualstudio.com/items?itemName=padok.vscode-mwel)
 
 ## Known Issues
 
@@ -10,10 +12,10 @@ Calling out known issues can help limit users opening duplicate issues against y
 
 Users appreciate release notes as you update your extension.
 
-### 1.0.0
+### 0.0.1 - 2022-10-06
 
-TBA
-
++ Initial release
++ Syntax highlighting
 
 ## License
 

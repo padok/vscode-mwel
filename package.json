@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "displayName": "vscode-mwel",
   "publisher": "padok",
-  "description": "The mWorks Experiment Language (MWEL) extension adds language support for MWEL to Visual Studio Code.",
+  "description": "This extension adds language support for mWorks Experiment Language (MWEL) to Visual Studio Code.",
   "engines": {
     "vscode": "^1.71.0"
   },
