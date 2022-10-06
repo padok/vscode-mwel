@@ -8,15 +8,6 @@ This extension adds language support for mWorks Experiment Language (MWEL) to Vi
 
 Calling out known issues can help limit users opening duplicate issues against your extension.
 
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 0.0.1 - 2022-10-06
-
-+ Initial release
-+ Syntax highlighting
-
 ## License
 
 This extension heavily borrows from [cstawarz's repository](https://github.com/cstawarz/mwel_sublime) for Sublime.
