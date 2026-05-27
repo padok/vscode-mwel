@@ -1,0 +1,12 @@
+var x = 2
+
+protocol 'Test Protocol' {
+    if (x > 1) {
+        report ('x is greater than 1!')
+    }
+    x = 'foo'
+    report ('x = $x')
+}
+
+experiment 'My Experiment' {
+}

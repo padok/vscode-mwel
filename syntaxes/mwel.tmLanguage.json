@@ -1,11 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "MWEL",
-	"variables": {
-		"identifier": "[a-zA-Z][a-zA-Z0-9_]*",
-		"arithmetic_operator": "\\+|-|\\*|/|%",
-		"assignment_operator": "({{arithmetic_operator}})?="
-	},
 	"patterns": [
 		{
 			"include": "#directives"
@@ -26,6 +21,9 @@
 			"include": "#transition"
 		},
 		{
+			"include": "#generated_components"
+		},
+		{
 			"include": "#generic_component"
 		},
 		{
@@ -44,8 +42,8 @@
 	"repository": {
 		"directives": {
 			"patterns": [
-			{
-					"match": "^\\s*((%)define)\\s+({{identifier}})",
+				{
+					"match": "^\\s*((%)define)\\s+([a-zA-Z][a-zA-Z0-9_]*)",
 					"captures": {
 						"0": "keyword.declaration.function.mwel storage.type.function.mwel",
 						"1": "punctuation.definition.keyword.mwel",
@@ -112,7 +110,7 @@
 			"patterns": [
 				{
 					"name": "variable.function.mwel",
-					"match": "^\\s*{{identifier}}(/{{identifier}})?\\b(?!\\s*{{assignment_operator}})"
+					"match": "^\\s*[a-zA-Z][a-zA-Z0-9_]*(/[a-zA-Z][a-zA-Z0-9_]*)?\\b(?!\\s*(\\+|-|\\*|/|%)?=)"
 				}
 			]
 		},
@@ -196,11 +194,11 @@
 			"patterns": [
 				{
 					"name": "keyword.operator.assignment.mwel",
-					"match": "{{assignment_operator}}"
+					"match": "(\\+|-|\\*|/|%)?="
 				},
 				{
 					"name": "keyword.operator.arithmetic.mwel",
-					"match": "{{arithmetic_operator}}"
+					"match": "\\+|-|\\*|/|%"
 				},
 				{
 					"name": "keyword.operator.mwel",
@@ -228,6 +226,14 @@
 				{
 					"name": "punctuation.separator.mwel",
 					"match": ":|,|;"
+				}
+			]
+		},
+		"generated_components": {
+			"patterns": [
+				{
+					"name": "support.type.component.mwel entity.name.type.component.mwel variable.function.mwel",
+					"match": "^\\s*(action/end_calibration_average_and_take_sample|action/end_calibration_average_and_ignore|iodevice/open_ephys_network_events_client|end_calibration_average_and_take_sample|action/fake_monkey_saccade_to_location|iochannel/firmata_digital_input_pullup|iochannel/firmata_digital_output_pulse|iochannel/usbhid_generic_input_channel|action/fake_monkey_saccade_and_fixate|iochannel/firmata_digital_input_pulse|calibrator/standard_eye_calibrator|end_calibration_average_and_ignore|action/begin_calibration_average|calibrator/linear_eye_calibrator|iochannel/firmata_digital_output|iochannel/rcb_lvds_digital_input|open_ephys_network_events_client|stimulus/circular_fixation_point|action/unpause_dynamic_stimulus|fake_monkey_saccade_to_location|iochannel/firmata_analog_output|iochannel/firmata_digital_input|stimulus/white_noise_background|action/bring_stimulus_to_front|action/take_calibration_sample|action/update_stimulus_display|fake_monkey_saccade_and_fixate|iochannel/firmata_analog_input|stimulus/image_directory_movie|action/clear_stimulus_display|action/pause_dynamic_stimulus|iochannel/firmata_word_output|iodevice/open_ephys_interface|action/play_dynamic_stimulus|action/send_stimulus_to_back|action/stop_dynamic_stimulus|firmata_digital_input_pullup|firmata_digital_output_pulse|iodevice/rotary_speed_sensor|usbhid_generic_input_channel|action/randomize_background|firmata_digital_input_pulse|iodevice/serverside_conduit|action/live_queue_stimulus|action/fake_monkey_fixate|action/update_calibration|action/wait_for_condition|begin_calibration_average|iodevice/stimulus_display|stimulus/drifting_grating|stimulus/optic_flow_field|stimulus/parametric_shape|action/accept_selections|action/clear_calibration|action/move_mouse_cursor|action/reject_selections|action/resume_experiment|action/run_python_string|filter/basic_eye_monitor|iodevice/face_recognizer|transition/timer_expired|unpause_dynamic_stimulus|action/dequeue_stimulus|action/pause_experiment|action/reset_selections|bring_stimulus_to_front|circular_fixation_point|filter/boxcar_filter_1d|iochannel/firmata_servo|iodevice/usbhid_generic|standard_eye_calibrator|stimulus/fixation_point|stimulus/oriented_noise|stimulus/render_actions|take_calibration_sample|update_stimulus_display|action/reset_selection|action/run_python_file|action/start_device_io|action/start_io_device|action/stop_experiment|action/unload_stimulus|clear_stimulus_display|firmata_digital_output|iochannel/eye_movement|pause_dynamic_stimulus|rcb_lvds_digital_input|transition/conditional|white_noise_background|action/next_selection|action/queue_stimulus|action/stop_device_io|action/stop_io_device|action/update_display|firmata_analog_output|firmata_digital_input|image_directory_movie|linear_eye_calibrator|play_dynamic_stimulus|send_stimulus_to_back|stimulus/blank_screen|stimulus/python_image|stop_dynamic_stimulus|action/clear_display|action/hide_stimulus|action/load_stimulus|action/show_stimulus|firmata_analog_input|iodevice/fake_monkey|iodevice/mouse_input|iodevice/touch_input|open_ephys_interface|randomize_background|resource/python_file|stimulus/moving_dots|action/set_timebase|action/unload_sound|firmata_word_output|live_queue_stimulus|rotary_speed_sensor|stimulus/frame_list|stimulus/image_file|variable_assignment|action/pause_sound|action/start_timer|fake_monkey_fixate|iodevice/data_file|serverside_conduit|stimulus/rectangle|update_calibration|variable/selection|wait_for_condition|accept_selections|action/assignment|action/load_sound|action/play_sound|action/stop_sound|basic_eye_monitor|clear_calibration|iodevice/easy_eye|iodevice/rcb_lvds|move_mouse_cursor|reject_selections|resume_experiment|run_python_string|stimulus/compound|task_system_state|transition/direct|action/otherwise|boxcar_filter_1d|dequeue_stimulus|drifting_grating|iodevice/firmata|iodevice/qcualor|optic_flow_field|parametric_shape|pause_experiment|range_replicator|sound/audio_file|stimulus_display|stimulus/ellipse|transition/yield|action/schedule|face_recognizer|iochannel/juice|iochannel/ne500|iochannel/spike|list_replicator|reset_selection|run_python_file|start_device_io|stimulus/circle|stop_experiment|transition/goto|unload_stimulus|action/if_else|action/on_exit|fixation_point|iodevice/iscan|iodevice/ne500|next_selection|oriented_noise|queue_stimulus|render_actions|sound/wav_file|stimulus_group|stimulus/layer|stimulus/movie|stimulus/video|stop_device_io|usbhid_generic|action/assert|action/choose|action/report|firmata_servo|load_stimulus|stimulus/mask|stimulus/text|timer_expired|action/pulse|action/while|bias_monitor|blank_screen|eye_movement|python_image|set_timebase|unload_sound|action/else|action/wait|action/when|conditional|fake_monkey|mouse_input|moving_dots|pause_sound|python_file|sound_group|start_timer|task_system|touch_input|assignment|audio_file|experiment|frame_list|image_file|load_sound|play_sound|sound/tone|stop_sound|action/if|data_file|rectangle|selection|staircase|compound|easy_eye|protocol|rcb_lvds|resource|schedule|variable|ellipse|firmata|if_else|on_exit|qcualor|assert|direct|folder|report|block|group|iscan|juice|layer|movie|pulse|spike|state|trial|video|while|yield|else|goto|list|mask|task|text|tone|wait|var|if)\\b(?!\\s*(\\+|-|\\*|/|%)?=)"
 				}
 			]
 		}

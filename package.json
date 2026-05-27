@@ -1,6 +1,6 @@
 {
   "name": "vscode-mwel",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "displayName": "vscode-mwel",
   "publisher": "padok",
   "description": "This extension adds language support for mWorks Experiment Language (MWEL) to Visual Studio Code.",
@@ -14,12 +14,89 @@
   "categories": [
     "Programming Languages"
   ],
+  "keywords": [
+    "mworks",
+    "mwel",
+    "experiment",
+    "language"
+  ],
   "license": "MIT",
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:mwel",
+    "onCommand:mwel.validateCurrentFile"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run sync:mwel",
+    "test": "npm run test:python && npm run test:grammar",
+    "test:python": "python -m unittest discover -s tests -p \"test_*.py\"",
+    "test:grammar": "node tests/test_mwel_grammar.js",
+    "sync:mwel": "python scripts/sync_mwel_vendor.py && node scripts/sync_components_metadata.js && node scripts/sync_mwel_grammar.js",
+    "sync:components": "node scripts/sync_components_metadata.js",
+    "sync:grammar": "node scripts/sync_mwel_grammar.js",
+    "prepackage": "npm run sync:mwel",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/vscode": "^1.71.0",
+    "@vscode/vsce": "^3.6.0",
+    "typescript": "^5.4.5",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.3.2",
+    "yaml": "^2.9.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/padok/vscode-mwel"
   },
   "contributes": {
+    "commands": [
+      {
+        "command": "mwel.validateCurrentFile",
+        "title": "Validate Current File",
+        "category": "MWEL"
+      }
+    ],
+    "configuration": {
+      "title": "MWEL",
+      "properties": {
+        "mwel.pythonPath": {
+          "type": "string",
+          "default": "python",
+          "description": "Python executable used to run the MWEL bridge."
+        },
+        "mwel.componentsJsonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional path to MWorks components.json for richer MWEL validation."
+        },
+        "mwel.mworksPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional path to a local MWorks checkout or installation. Used to locate MWEL tooling and metadata."
+        },
+        "mwel.validateOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Validate MWEL files when they are saved."
+        },
+        "mwel.validateOnChange": {
+          "type": "boolean",
+          "default": true,
+          "description": "Validate unsaved MWEL changes after a short delay."
+        },
+        "mwel.validateOnChangeDelay": {
+          "type": "number",
+          "default": 100,
+          "minimum": 0,
+          "description": "Delay in milliseconds before validating unsaved MWEL changes."
+        }
+      }
+    },
     "languages": [
       {
         "id": "mwel",

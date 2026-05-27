@@ -1,2 +1,9 @@
 .DS_Store
 *.vsix
+node_modules/
+out/
+.vscode-test/
+__pycache__/
+*.pyc
+vendor/components.json
+vendor/mwel/
