@@ -1,17 +1,29 @@
-# vscode-mwel README
+<p align="center">
+  <img src="images/mwel.png" alt="vscode-mwel icon" width="96">
+</p>
 
-This extension adds language support for mWorks Experiment Language (MWEL) to Visual Studio Code.
+<h1 align="center">vscode-mwel</h1>
 
-[Visual Studio Code - Marketplace](https://marketplace.visualstudio.com/items?itemName=padok.vscode-mwel)
+<p align="center">
+  Language support for MWorks Experiment Language (MWEL) in Visual Studio Code.
+</p>
+
+<p align="center">
+  <a href="https://marketplace.visualstudio.com/items?itemName=padok.vscode-mwel">Visual Studio Marketplace</a>
+</p>
 
 ## Features
 
-- Syntax highlighting for `.mwel` files.
-- Live MWEL parser diagnostics for unsaved editor contents via the canonical MWorks MWEL Python parser.
-- Component validation via bundled metadata generated from MWorks `MWComponents.yaml` documentation.
-- Component hover documentation from generated MWorks component metadata.
-- Full-document formatting that validates with MWorks, then preserves source comments and blank lines while fixing indentation.
-- Optional override with a local MWorks `components.json` file.
+- Syntax highlighting for `.mwel` files, including component names generated from MWorks metadata.
+- Live diagnostics for saved and unsaved editor contents via the canonical MWorks MWEL Python parser.
+- Component validation with bundled metadata generated from MWorks `MWComponents.yaml` documentation.
+- Hover documentation for MWorks components and parameters.
+- Conservative Format Document support that validates before editing, preserves comments and blank lines, and fixes indentation.
+- Optional overrides for local MWorks installations or custom `components.json` metadata.
+
+## Formatting
+
+Formatting is available through VS Code's standard Format Document command. The formatter validates with the MWorks parser, analyzer, and validator before editing, then works on the original source text so comments, blank lines, aliases, parameter order, and section layout are preserved. Files with parser, analyzer, or validator errors are left untouched.
 
 ## Extension Settings
 
@@ -37,8 +49,6 @@ npm run package
 The generated `vendor/mwel` and `vendor/components.json` files are ignored in git but included in packaged VSIX builds. Diagnostics, hover documentation, and component-name highlighting all use metadata generated from the submodule, so MWorks component changes flow into those editor features when the sync/package flow runs. Users of the extension do not need the submodule.
 
 The test suite covers the Python MWEL bridge, parser error reporting, configured metadata validation, formatting, extension manifest wiring, and TextMate grammar tokenization.
-
-Formatting is available through VS Code's standard Format Document command. It validates with the MWorks parser, analyzer, and validator before editing, then conservatively fixes indentation in the original source. Comments, blank lines, aliases, parameter order, and section layout are preserved. It refuses to format files with parser, analyzer, or validator errors.
 
 GitHub releases are created automatically for version tags such as `v0.2.0`, with the packaged `.vsix` attached. To publish on the VS Code Marketplace, upload the release `.vsix` manually from the Marketplace management page.
 
