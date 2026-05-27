@@ -1,0 +1,46 @@
+//
+// Synthetic MWEL fixture for extension testing.
+// This file is intentionally generic and does not come from a real experiment.
+//
+
+var trial_count = 0
+var max_trials = 3
+var fixation_timeout_ms = 750
+var last_result = 'not started'
+
+group DISPLAY {
+    var background_luminance = 0.2
+    var target_x = 0
+    var target_y = 0
+    var target_size = 4
+}
+
+group TASK_STATE {
+    var fixation_acquired = false
+    var response_acquired = false
+    var reward_amount = 0.05
+}
+
+protocol 'Synthetic Formatting Protocol' {
+    report ('starting synthetic fixture')
+
+    if (trial_count < max_trials) {
+        trial_count = trial_count + 1
+        last_result = 'running trial $trial_count'
+        report (last_result)
+    }
+
+    if (fixation_acquired) {
+        response_acquired = true
+        last_result = 'response accepted'
+        report (last_result)
+    }
+
+    if (!fixation_acquired) {
+        last_result = 'fixation timeout after $fixation_timeout_ms ms'
+        report (last_result)
+    }
+}
+
+experiment 'Synthetic Experiment' {
+}
